@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -5,73 +6,177 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* FUNDO HOLOGRÁFICO */
 body {
-  background: #0f172a;
-  color: #e5e7eb;
+  height: 100vh;
+  background: linear-gradient(
+    120deg,
+    #020617,
+    #0f172a,
+    #1e293b,
+    #020617
+  );
+  background-size: 400% 400%;
+  animation: holo 12s ease infinite;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background 1.5s;
 }
 
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #020617, #0f172a);
+@keyframes holo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* BOTÃO */
+#enterBtn {
+  width: 90px;
+  height: 90px;
+  background: #22c55e;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 
+    width 0.4s ease,
+    border-radius 0.4s ease,
+    background 0.4s;
+
+  overflow: hidden;
+  z-index: 10;
+}
+
+#enterBtn span {
+  opacity: 0;
+  color: #020617;
+  font-weight: bold;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+#enterBtn:hover {
+  width: 260px;
+  border-radius: 40px;
+  background: #4ade80;
+}
+
+#enterBtn:hover span {
+  opacity: 1;
+}
+
+/* CENA */
+#scene {
+  position: absolute;
+  inset: 0;
+  background: #f8fafc;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 20px;
+  gap: 40px;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  letter-spacing: 2px;
+.hidden {
+  display: none;
 }
 
-.hero p {
-  margin: 15px 0 25px;
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.btn {
-  background: #22c55e;
-  color: #020617;
-  padding: 15px 30px;
-  border-radius: 30px;
-  text-decoration: none;
+/* TEXTO DAS ETAPAS */
+#stageText {
+  font-size: 2.2rem;
   font-weight: bold;
-  transition: 0.3s;
+  color: #020617;
+  animation: fadeIn 1s;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-  background: #16a34a;
+/* ÁREA DO BOLO */
+#cakeArea {
+  width: 300px;
+  height: 300px;
+  position: relative;
 }
 
-.info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 60px 10%;
-  background: #020617;
+/* INGREDIENTES */
+.item {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  animation: drop 1s forwards;
 }
 
-.card {
-  background: #0f172a;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+@keyframes drop {
+  to {
+    top: 120px;
+  }
 }
 
-.card h2 {
-  margin-bottom: 10px;
-  color: #22c55e;
+/* CAMADAS DO BOLO */
+.layer {
+  width: 220px;
+  height: 40px;
+  background: #d97706;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fallLayer 0.8s forwards;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
-  font-size: 0.9rem;
-  opacity: 0.7;
+@keyframes fallLayer {
+  from { top: -60px; }
+  to { top: var(--y); }
+}
+
+/* COBERTURA */
+.cover {
+  width: 240px;
+  height: 50px;
+  background: #f472b6;
+  border-radius: 20px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: slide 1s forwards;
+}
+
+@keyframes slide {
+  from { width: 0; }
+  to { width: 240px; }
+}
+
+/* CONFETE */
+.confetti {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#22c55e 2px, transparent 2px);
+  background-size: 20px 20px;
+  animation: confettiFall 3s linear;
+  pointer-events: none;
+}
+
+@keyframes confettiFall {
+  from { background-position: 0 0; }
+  to { background-position: 0 100vh; }
+}
+
+/* FINAL */
+.final {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #16a34a;
+  animation: pop 1s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }

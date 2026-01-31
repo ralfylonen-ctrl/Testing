@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empresa Exemplo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <h1>EMPRESA EXEMPLO</h1>
+    <p>Soluções simples, rápidas e confiáveis</p>
+
+    <a 
+      href="https://wa.me/5500000000000" 
+      target="_blank" 
+      class="btn"
+    >
+      Fale conosco no WhatsApp
+    </a>
+  </header>
+
+  <section class="info">
+    <div class="card">
+      <h2>📍 Endereço</h2>
+      <p>Rua Exemplo, 123 – Centro</p>
+    </div>
+
+    <div class="card">
+      <h2>⏰ Horário</h2>
+      <p>Seg a Sex: 08h – 18h<br>Sábado: 08h – 12h</p>
+    </div>
+
+    <div class="card">
+      <h2>💼 Planos</h2>
+      <p>Planos acessíveis para sua necessidade</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Empresa Exemplo</p>
+  </footer>
+
+</body>
+</html>
